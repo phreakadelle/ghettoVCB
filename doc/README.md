@@ -32,3 +32,20 @@ Step 3 - Confirm that your email rule has been loaded by running the following E
 ~ # esxcli network firewall ruleset list | grep email
 email                  true
 ```
+
+# Cronjob
+## Which file to edit
+```
+vi /var/spool/cron/crontabs/root
+``` 
+
+# Content
+```
+3 17 * * 1-5 /opt/ghettovcb/bin/ghettoVCB.sh -m Centos_6_x64_template -g /etc/ghettovcb/stephan.conf > /vmfs/volumes/Datastore3/backups/backup-\$(date +\\%
+```
+
+# Restart
+```
+kill $(cat /var/run/crond.pid)
+crond
+```
