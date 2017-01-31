@@ -23,9 +23,8 @@ Step 1 - Create a file called /etc/vmware/firewall/email.xml with contains the f
 </ConfigRoot>
  ```
 Step 2 - Reload the ESXi firewall by running the following ESXCLI command:
-```~ #
-
-esxcli network firewall refresh
+```
+~ # esxcli network firewall refresh
 ```
 
 Step 3 - Confirm that your email rule has been loaded by running the following ESXCLI command:
