@@ -39,12 +39,12 @@ email                  true
 vi /var/spool/cron/crontabs/root
 ``` 
 
-# Content
+## Content
 ```
 3 17 * * 1-5 /opt/ghettovcb/bin/ghettoVCB.sh -m Centos_6_x64_template -g /etc/ghettovcb/stephan.conf > /vmfs/volumes/Datastore3/backups/backup-\$(date +\\%
 ```
 
-# Restart
+## Restart
 ```
 kill $(cat /var/run/crond.pid)
 crond
