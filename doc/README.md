@@ -41,7 +41,7 @@ vi /var/spool/cron/crontabs/root
 
 ## Content
 ```
-3 17 * * 1-5 /opt/ghettovcb/bin/ghettoVCB.sh -m Centos_6_x64_template -g /etc/ghettovcb/stephan.conf > /vmfs/volumes/Datastore3/backups/backup-\$(date +\\%
+3 17 * * 1-5 /opt/ghettovcb/bin/ghettoVCB.sh -m Centos_6_x64_template -g /etc/ghettovcb/stephan.conf > /vmfs/volumes/Datastore3/backups/backup-\$(date +\\%s).log
 ```
 
 ## Restart
