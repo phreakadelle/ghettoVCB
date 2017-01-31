@@ -26,7 +26,8 @@ Step 2 - Reload the ESXi firewall by running the following ESXCLI command:
 ```~ #
 
 esxcli network firewall refresh
-``` 
+```
+
 Step 3 - Confirm that your email rule has been loaded by running the following ESXCLI command:
 ```
 ~ # esxcli network firewall ruleset list | grep email
