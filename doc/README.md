@@ -38,6 +38,11 @@ Step 3 - Confirm that your email rule has been loaded by running the following E
 email                  true
 ```
 
+```
+/opt/ghettovcb/bin/ghettoVCB.sh -m srv07 -g /vmfs/volumes/SSD1/auto-backup/ghettoVCB-srv07.conf -d info
+```
+
+
 # Cronjob
 ## Which file to edit
 ```
