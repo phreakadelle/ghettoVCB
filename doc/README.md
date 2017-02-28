@@ -4,6 +4,7 @@
 
 * https://communities.vmware.com/docs/DOC-8760
 * http://www.virtuallyghetto.com/2015/05/ghettovcb-vib-offline-bundle-for-esxi.html
+* http://www.hoelzle.net/ghetto-vcb-unter-esxi-6-mit-mailinfo-und-vereinfachter-verwaltung-der-vms/#comment-28
 
 # Change Package Level
 ```
@@ -57,5 +58,12 @@ vi /var/spool/cron/crontabs/root
 ## Restart
 ```
 kill $(cat /var/run/crond.pid)
+crond
+```
+
+### Crontab
+```
+/bin/kill $(cat /var/run/crond.pid)
+/bin/echo "0 4 * * 1-5 /opt/ghettovcb/bin/ghettoVCB.sh -m srv07 -g /vmfs/volumes/SSD1/auto-backup/ghettoVCB-srv07.conf -d info >  /vmfs/volumes/nas//backup-\$(date +\\%s).log" >> /var/spool/cron/crontabs/root
 crond
 ```
