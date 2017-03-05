@@ -5,6 +5,8 @@
 * https://communities.vmware.com/docs/DOC-8760
 * http://www.virtuallyghetto.com/2015/05/ghettovcb-vib-offline-bundle-for-esxi.html
 * http://www.hoelzle.net/ghetto-vcb-unter-esxi-6-mit-mailinfo-und-vereinfachter-verwaltung-der-vms/#comment-28
+* http://www.timharrison.me.uk/guides/vmware-esxi-5.5/file-is-read-only-when-editing-crontab-in-vmware
+* http://stackoverflow.com/questions/16928004/how-to-enter-ssh-password-using-bash
 
 # Change Package Level
 ```
@@ -52,18 +54,19 @@ vi /var/spool/cron/crontabs/root
 
 ## Content
 ```
-3 17 * * 1-5 /opt/ghettovcb/bin/ghettoVCB.sh -m Centos_6_x64_template -g /etc/ghettovcb/stephan.conf >  /vmfs/volumes/Datastore3/backups/backup-$(date +\%s).log
+0 4 * * 1-5 /opt/ghettovcb/bin/ghettoVCB.sh -m srv07 -g /vmfs/volumes/SSD1/auto-backup/ghettoVCB-srv07.conf -d info >  /vmfs/volumes/nas/backup-$(date +\%s).log
 ```
 
-## Restart
+# Cron Restart
 ```
 kill $(cat /var/run/crond.pid)
 crond
 ```
 
-### Crontab
+# Write Crontab Entry to rc.local
+File: /etc/rc.local.d/local.sh
 ```
 /bin/kill $(cat /var/run/crond.pid)
-/bin/echo "0 4 * * 1-5 /opt/ghettovcb/bin/ghettoVCB.sh -m srv07 -g /vmfs/volumes/SSD1/auto-backup/ghettoVCB-srv07.conf -d info >  /vmfs/volumes/nas//backup-\$(date +\\%s).log" >> /var/spool/cron/crontabs/root
+/bin/echo "0 4 * * 1-5 /opt/ghettovcb/bin/ghettoVCB.sh -m srv07 -g /vmfs/volumes/SSD1/auto-backup/ghettoVCB-srv07.conf -d info >  /vmfs/volumes/nas/backup-\$(date +\\%s).log" >> /var/spool/cron/crontabs/root
 crond
 ```
